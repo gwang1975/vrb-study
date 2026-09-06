@@ -18,7 +18,8 @@ today = datetime.now().strftime("%Y-%m-%d")
 
 def run(cmd, **kwargs):
     r = subprocess.run(cmd, cwd=REPO, env=env,
-                      capture_output=True, text=True, **kwargs)
+                      capture_output=True, text=True,
+                      encoding='utf-8', errors='replace', **kwargs)
     return r.returncode, r.stdout, r.stderr
 
 # 1. 检查是否有变化
